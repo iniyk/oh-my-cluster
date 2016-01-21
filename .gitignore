@@ -11,3 +11,10 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Config files.
+config/database.yml
+config/secrets.yml
+
+# RubyMine files.
+.idea/
