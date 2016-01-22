@@ -21,3 +21,4 @@ config/secrets.yml
 
 # Third party front libary.
 vendor/
+public/assets/

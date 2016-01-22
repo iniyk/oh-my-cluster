@@ -10,6 +10,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require bootstrap/dist/css/bootstrap
+ *= require metisMenu/dist/metisMenu
+ *= require morrisjs/morris
+ *= require font-awesome/css/font-awesome
  *= require_tree .
  *= require_self
  */
