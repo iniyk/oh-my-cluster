@@ -1,3 +1,5 @@
+require 'digest'
+
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -24,7 +26,12 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    md5 = Digest::MD5.new
+    md5 << params[:password]
+    password_md5 = md5.hexdigest
+
     @user = User.new(user_params)
+    @user.passwd_md5 = password_md5
 
     respond_to do |format|
       if @user.save
@@ -40,8 +47,15 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    md5 = Digest::MD5.new
+    md5 << params[:password]
+    password_md5 = md5.hexdigest
+
+    user_params_with_passwd_md5 = user_params.clone()
+    user_params_with_passwd_md5['passwd_md5'] = password_md5
+
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update(user_params_with_passwd_md5)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else

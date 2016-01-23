@@ -23,11 +23,11 @@
     <%=f.error_span(:name) %>
   </div>
   <div class="form-group">
-    <%= f.label :passwd_md5, :class => 'control-label col-lg-2' %>
+    <%= label_tag "password_label", "New Password", :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :passwd_md5, :class => 'form-control' %>
+      <%= password_field_tag "password", "", :class => 'form-control' %>
     </div>
-    <%=f.error_span(:passwd_md5) %>
+    <%=f.error_span(:password) %>
   </div>
   <div class="form-group">
     <%= f.label :role, :class => 'control-label col-lg-2' %>
@@ -46,7 +46,7 @@
   <div class="form-group">
     <%= f.label :info, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :info, :class => 'form-control' %>
+      <%= f.text_area :info, :class => 'form-control', :rows => '5' %>
     </div>
     <%=f.error_span(:info) %>
   </div>
