@@ -32,6 +32,8 @@ class UsersController < ApplicationController
 
     @user = User.new(user_params)
     @user.passwd_md5 = password_md5
+    @user.role = params[:role].to_i
+    @user.group = params[:group].to_i
 
     respond_to do |format|
       if @user.save
@@ -47,15 +49,20 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    md5 = Digest::MD5.new
-    md5 << params[:password]
-    password_md5 = md5.hexdigest
-
-    user_params_with_passwd_md5 = user_params.clone()
-    user_params_with_passwd_md5['passwd_md5'] = password_md5
+    user_params_submit = user_params.clone()
+    user_params_submit[:role] = params[:role].to_i
+    user_params_submit[:group] = params[:group].to_i
+    if params[:password] == ""
+      md5 = Digest::MD5.new
+      md5 << params[:password]
+      password_md5 = md5.hexdigest
+      user_params_submit['passwd_md5'] = password_md5
+    else
+      user_params_submit['passwd_md5'] = @user.passwd_md5
+    end
 
     respond_to do |format|
-      if @user.update(user_params_with_passwd_md5)
+      if @user.update(user_params_submit)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -83,6 +90,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :passwd_md5, :role, :group, :info)
+      params.require(:user).permit(:name, :info)
     end
 end

@@ -1,27 +1,21 @@
-<%- model_class = User -%>
+<%- model_class = Group -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @user.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:passwd_md5) %>:</strong></dt>
-  <dd><%= @user.passwd_md5 %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:role) %>:</strong></dt>
-  <dd><%= Role.find_by_id(@user.role).name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:group) %>:</strong></dt>
-  <dd><%= Group.find_by_id(@user.group).name %></dd>
+  <dd><%= @group.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:info) %>:</strong></dt>
-  <dd><%= @user.info %></dd>
+  <dd><%= @group.info %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
-              users_path, :class => 'btn btn-default'  %>
+              groups_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_user_path(@user), :class => 'btn btn-default' %>
+              edit_group_path(@group), :class => 'btn btn-default' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              user_path(@user),
+              group_path(@group),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
