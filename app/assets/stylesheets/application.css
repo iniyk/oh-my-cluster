@@ -14,6 +14,7 @@
  *= require metisMenu/dist/metisMenu
  *= require morrisjs/morris
  *= require font-awesome/css/font-awesome
+ *= require sb-admin-2
  *= require_tree .
  *= require_self
  */
