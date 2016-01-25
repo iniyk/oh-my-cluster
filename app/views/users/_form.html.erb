@@ -23,23 +23,23 @@
     <%=f.error_span(:name) %>
   </div>
   <div class="form-group">
-    <%= label_tag "password_label", "New Password", :class => 'control-label col-lg-2' %>
+    <%= label_tag :password, 'New Password', :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= password_field_tag "password", "", :class => 'form-control' %>
+      <%= password_field_tag :password, '', :class => 'form-control' %>
     </div>
     <%=f.error_span(:password) %>
   </div>
   <div class="form-group">
     <%= f.label :role, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= select_tag "role", options_from_collection_for_select(Role.all, 'id', 'name'), :class => 'form-control' %>
+      <%= select_tag :role, options_from_collection_for_select(Role.all, 'id', 'name'), :class => 'form-control' %>
     </div>
     <%=f.error_span(:role) %>
   </div>
   <div class="form-group">
     <%= f.label :group, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= select_tag "group", options_from_collection_for_select(Group.all, 'id', 'name'), :class => 'form-control' %>
+      <%= select_tag :group, options_from_collection_for_select(Group.all, 'id', 'name'), :class => 'form-control' %>
     </div>
     <%=f.error_span(:group) %>
   </div>

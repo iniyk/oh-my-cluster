@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    user_params_submit = user_params.clone()
+    user_params_submit = user_params.clone
     user_params_submit[:role] = params[:role].to_i
     user_params_submit[:group] = params[:group].to_i
     if params[:password] == ""
