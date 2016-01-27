@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :nodes
+  resources :nodes do
+    member do
+      get 'status'
+    end
+  end
   resources :groups
   resources :roles
   resources :users

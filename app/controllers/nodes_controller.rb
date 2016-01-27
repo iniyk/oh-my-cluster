@@ -1,7 +1,7 @@
 require 'net/ssh'
 
 class NodesController < ApplicationController
-  before_action :set_node, only: [:show, :edit, :update, :destroy]
+  before_action :set_node, only: [:show, :edit, :update, :destroy, :status]
 
   # GET /nodes
   # GET /nodes.json
@@ -81,6 +81,11 @@ class NodesController < ApplicationController
       format.html { redirect_to nodes_url, notice: 'Node was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # GET /nodes/1/status
+  def status
+    render 'show'
   end
 
   private
