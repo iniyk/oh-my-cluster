@@ -3,27 +3,163 @@
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @node.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
-  <dd><%= @node.address %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user) %>:</strong></dt>
-  <dd><%= @node.user %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:id_rsa) %>:</strong></dt>
-  <dd><%= @node.id_rsa %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:id_rsa_pub) %>:</strong></dt>
-  <dd><%= @node.id_rsa_pub %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:info) %>:</strong></dt>
-  <dd><%= @node.info %></dd>
-</dl>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="alert alert-success alert-dismissable">
 
-<%= link_to t('.back', :default => t("helpers.links.back")),
-              nodes_path, :class => 'btn btn-default'  %>
-<%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_node_path(@node), :class => 'btn btn-default' %>
-<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              node_path(@node),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+          ×
+        </button>
+        <h4>
+          Alert!
+        </h4> <strong>Warning!</strong> Best check yo self, you're not looking too good. <a href="#" class="alert-link">alert link</a>
+      </div>
+      <div class="btn-group">
+
+        <button class="btn btn-default" type="button">
+          <em class="glyphicon glyphicon-link"></em> Attach
+        </button>
+        <button class="btn btn-default" type="button">
+          <em class="glyphicon glyphicon-flash"></em> Pending
+        </button>
+        <button class="btn btn-default" type="button">
+          <em class="fa fa-refresh"></em> Restart
+        </button>
+      </div>
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a href="javascript:void(0)">Info</a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">Control</a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">Files</a>
+        </li>
+      </ul>
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th><%= model_class.human_attribute_name(:name) %></th>
+          <th><%= @node.name %></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><%= model_class.human_attribute_name(:address) %></td>
+          <td><%= @node.address %></td>
+        </tr>
+        <tr>
+          <td><%= model_class.human_attribute_name(:user) %></td>
+          <td><%= @node.user %></td>
+        </tr>
+        <tr>
+          <td><%= model_class.human_attribute_name(:info) %></td>
+          <td><%= @node.info %></td>
+        </tr>
+        <tr>
+          <td><%= model_class.human_attribute_name(:id_rsa_pub) %></td>
+          <td>
+            <a id="modal-249189" href="#modal-container-249189" role="button"
+               class="btn btn-primary" data-toggle="modal">id_rsa.pub</a>
+            <div class="modal fade" id="modal-container-249189" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      ×
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                      id_rsa.pub
+                    </h4>
+                  </div>
+                  <div class="modal-body">
+                    <p><%= @node.id_rsa_pub %></p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <%= link_to t('.back', :default => t("helpers.links.back")),
+                  nodes_path, :class => 'btn btn-default'  %>
+      <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                  edit_node_path(@node), :class => 'btn btn-default' %>
+      <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                  node_path(@node),
+                  :method => 'delete',
+                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                  :class => 'btn btn-danger' %>
+
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <i class="fa fa-bell fa-fw"></i> Notifications Panel
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+          <div class="list-group">
+            <a href="#" class="list-group-item">
+              <i class="fa fa-comment fa-fw"></i> New Comment
+                                    <span class="pull-right text-muted small"><em>4 minutes ago</em>
+                                    </span>
+            </a>
+            <a href="#" class="list-group-item">
+              <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
+                                    </span>
+            </a>
+            <a href="#" class="list-group-item">
+              <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                    <span class="pull-right text-muted small"><em>27 minutes ago</em>
+                                    </span>
+            </a>
+            <a href="#" class="list-group-item">
+              <i class="fa fa-tasks fa-fw"></i> New Task
+                                    <span class="pull-right text-muted small"><em>43 minutes ago</em>
+                                    </span>
+            </a>
+            <a href="#" class="list-group-item">
+              <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small"><em>11:32 AM</em>
+                                    </span>
+            </a>
+            <a href="#" class="list-group-item">
+              <i class="fa fa-bolt fa-fw"></i> Server Crashed!
+                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
+                                    </span>
+            </a>
+            <a href="#" class="list-group-item">
+              <i class="fa fa-warning fa-fw"></i> Server Not Responding
+                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
+                                    </span>
+            </a>
+            <a href="#" class="list-group-item">
+              <i class="fa fa-shopping-cart fa-fw"></i> New Order Placed
+                                    <span class="pull-right text-muted small"><em>9:49 AM</em>
+                                    </span>
+            </a>
+            <a href="#" class="list-group-item">
+              <i class="fa fa-money fa-fw"></i> Payment Received
+                                    <span class="pull-right text-muted small"><em>Yesterday</em>
+                                    </span>
+            </a>
+          </div>
+          <!-- /.list-group -->
+          <a href="#" class="btn btn-default btn-block">View All Alerts</a>
+        </div>
+        <!-- /.panel-body -->
+      </div>
+    </div>
+  </div>
+</div>
