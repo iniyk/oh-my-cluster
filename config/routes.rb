@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'common/sshkeygen'
+
   resources :nodes do
     member do
       get 'status'
